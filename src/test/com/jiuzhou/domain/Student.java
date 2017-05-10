@@ -1,6 +1,7 @@
 package com.jiuzhou.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by 01210368 on 2017/5/10.
@@ -8,6 +9,15 @@ import java.io.Serializable;
 public class Student implements Serializable {
     private String name;
     private Integer age;
+    private List<Address> addresses;
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
 
     public Integer getAge() {
         return age;
