@@ -1,4 +1,4 @@
-package com.jiuzhou.demo.integer;
+package com.test.demo.integer;
 
 import org.junit.Test;
 

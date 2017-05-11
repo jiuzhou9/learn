@@ -1,14 +1,13 @@
-package com.jiuzhou.demo.json;
+package com.test.demo.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jiuzhou.domain.Address;
-import com.jiuzhou.domain.Student;
+import com.test.domain.Address;
+import com.test.domain.Student;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 01210368 on 2017/5/10.

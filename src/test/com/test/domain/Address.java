@@ -1,4 +1,4 @@
-package com.jiuzhou.domain;
+package com.test.domain;
 
 import java.io.Serializable;
 
