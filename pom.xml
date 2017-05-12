@@ -184,6 +184,7 @@
         <configuration>
           <verbose>true</verbose>
           <overwrite>true</overwrite>
+          <configurationFile>${basedir}/src/test/resources/generatorConfig.xml</configurationFile>
         </configuration>
       </plugin>
     </plugins>

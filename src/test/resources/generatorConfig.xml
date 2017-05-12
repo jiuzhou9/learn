@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
     <!--导入属性配置-->
-    <properties resource="mysql.properties"></properties>
+    <!--<properties resource="E:\wjz\learn\src\test\resources"></properties>-->
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <classPathEntry location="${jdbc.driverLocation}"/>
+    <classPathEntry location="C:\\Users\\01210368\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.20\\mysql-connector-java-5.1.20.jar"/>
 
     <context id="default" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -16,26 +16,26 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <jdbcConnection
-                driverClass="${jdbc.driverClass}"
-                connectionURL="${jdbc.connectionURL}"
-                userId="${jdbc.userId}"
-                password="${jdbc.password}">
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://10.103.16.186:3306/gshop_db"
+                userId="dev_all_186"
+                password="sjUUPGt5kv2L">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.jiuzhou.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.demo.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <!--是否为实体类创建构造方法-->
             <property name="constructorBased" value="false"/>
             <property name="trimStrings" value="true"/>
             <property name="immutable" value="false"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="com.jiuzhou.dao.mapper"
+        <sqlMapGenerator targetPackage="com.demo.dao.mapper"
                          targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
-        <javaClientGenerator targetPackage="com.jiuzhou.dao"
+        <javaClientGenerator targetPackage="com.demo.dao"
                              targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
