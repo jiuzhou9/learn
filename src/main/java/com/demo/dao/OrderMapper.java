@@ -1,6 +1,6 @@
-package com.jiuzhou.dao;
+package com.demo.dao;
 
-import com.jiuzhou.model.Order;
+import com.demo.model.Order;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer orderId);
