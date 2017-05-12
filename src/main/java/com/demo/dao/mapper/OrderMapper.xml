@@ -1,0 +1,2118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.demo.model.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="parent_order_id" jdbcType="INTEGER" property="parentOrderId" />
+    <result column="parent_order_sn" jdbcType="VARCHAR" property="parentOrderSn" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="opencity_id" jdbcType="INTEGER" property="opencityId" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="refuse_type" jdbcType="TINYINT" property="refuseType" />
+    <result column="shipping_time" jdbcType="INTEGER" property="shippingTime" />
+    <result column="pay_time" jdbcType="INTEGER" property="payTime" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="country" jdbcType="INTEGER" property="country" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="giver_name" jdbcType="VARCHAR" property="giverName" />
+    <result column="giver_province" jdbcType="INTEGER" property="giverProvince" />
+    <result column="giver_city" jdbcType="INTEGER" property="giverCity" />
+    <result column="giver_district" jdbcType="INTEGER" property="giverDistrict" />
+    <result column="giver_area" jdbcType="INTEGER" property="giverArea" />
+    <result column="giver_address" jdbcType="VARCHAR" property="giverAddress" />
+    <result column="giver_mobile" jdbcType="VARCHAR" property="giverMobile" />
+    <result column="sendtime" jdbcType="TINYINT" property="sendtime" />
+    <result column="area_number" jdbcType="VARCHAR" property="areaNumber" />
+    <result column="area_flag" jdbcType="BIT" property="areaFlag" />
+    <result column="sfarea" jdbcType="VARCHAR" property="sfarea" />
+    <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="ip" jdbcType="BIGINT" property="ip" />
+    <result column="best_date" jdbcType="INTEGER" property="bestDate" />
+    <result column="is_together" jdbcType="TINYINT" property="isTogether" />
+    <result column="best_time" jdbcType="TINYINT" property="bestTime" />
+    <result column="shipping_id" jdbcType="INTEGER" property="shippingId" />
+    <result column="sfairline" jdbcType="BIT" property="sfairline" />
+    <result column="shipping_sn" jdbcType="VARCHAR" property="shippingSn" />
+    <result column="warehouse_sn" jdbcType="VARCHAR" property="warehouseSn" />
+    <result column="received_time" jdbcType="INTEGER" property="receivedTime" />
+    <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="user_rank" jdbcType="DECIMAL" property="userRank" />
+    <result column="favourable_id" jdbcType="VARCHAR" property="favourableId" />
+    <result column="pay_id" jdbcType="INTEGER" property="payId" />
+    <result column="pay_fee" jdbcType="INTEGER" property="payFee" />
+    <result column="shipping_fee" jdbcType="INTEGER" property="shippingFee" />
+    <result column="sf_shipping_fee" jdbcType="INTEGER" property="sfShippingFee" />
+    <result column="product_amount" jdbcType="INTEGER" property="productAmount" />
+    <result column="order_amount" jdbcType="INTEGER" property="orderAmount" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="money_paid" jdbcType="INTEGER" property="moneyPaid" />
+    <result column="balance" jdbcType="INTEGER" property="balance" />
+    <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="coupon_type" jdbcType="BIT" property="couponType" />
+    <result column="coupon_money" jdbcType="INTEGER" property="couponMoney" />
+    <result column="use_integral" jdbcType="INTEGER" property="useIntegral" />
+    <result column="integral_money" jdbcType="INTEGER" property="integralMoney" />
+    <result column="gift_card" jdbcType="VARCHAR" property="giftCard" />
+    <result column="gift_card_money" jdbcType="INTEGER" property="giftCardMoney" />
+    <result column="to_user" jdbcType="VARCHAR" property="toUser" />
+    <result column="to_shop" jdbcType="VARCHAR" property="toShop" />
+    <result column="greet_card" jdbcType="INTEGER" property="greetCard" />
+    <result column="add_time" jdbcType="INTEGER" property="addTime" />
+    <result column="order_type" jdbcType="BIT" property="orderType" />
+    <result column="return_direction" jdbcType="BIT" property="returnDirection" />
+    <result column="projet_delivery_time" jdbcType="INTEGER" property="projetDeliveryTime" />
+    <result column="order_source" jdbcType="BIT" property="orderSource" />
+    <result column="order_belong" jdbcType="BIT" property="orderBelong" />
+    <result column="temperature_type" jdbcType="BIT" property="temperatureType" />
+    <result column="promtion_channels" jdbcType="BIT" property="promtionChannels" />
+    <result column="sale_type" jdbcType="BIT" property="saleType" />
+    <result column="sender_addr_id" jdbcType="INTEGER" property="senderAddrId" />
+    <result column="outer_id" jdbcType="VARCHAR" property="outerId" />
+    <result column="close_time" jdbcType="INTEGER" property="closeTime" />
+    <result column="edit_time" jdbcType="INTEGER" property="editTime" />
+    <result column="is_backmoney" jdbcType="CHAR" property="isBackmoney" />
+    <result column="backmoney_time" jdbcType="INTEGER" property="backmoneyTime" />
+    <result column="statis_state" jdbcType="BIT" property="statisState" />
+    <result column="is_logis_error" jdbcType="BIT" property="isLogisError" />
+    <result column="online_plat" jdbcType="INTEGER" property="onlinePlat" />
+    <result column="sms_type" jdbcType="BIT" property="smsType" />
+    <result column="is_list" jdbcType="INTEGER" property="isList" />
+    <result column="sfv_download" jdbcType="TINYINT" property="sfvDownload" />
+    <result column="order_sort" jdbcType="TINYINT" property="orderSort" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_sn, parent_order_id, parent_order_sn, user_id, opencity_id, order_status, 
+    refuse_type, shipping_time, pay_time, consignee, country, province, city, district, 
+    area, address, giver_name, giver_province, giver_city, giver_district, giver_area, 
+    giver_address, giver_mobile, sendtime, area_number, area_flag, sfarea, zipcode, tel, 
+    mobile, email, ip, best_date, is_together, best_time, shipping_id, sfairline, shipping_sn, 
+    warehouse_sn, received_time, invoice_id, integral, user_rank, favourable_id, pay_id, 
+    pay_fee, shipping_fee, sf_shipping_fee, product_amount, order_amount, discount, money_paid, 
+    balance, coupon_id, coupon_type, coupon_money, use_integral, integral_money, gift_card, 
+    gift_card_money, to_user, to_shop, greet_card, add_time, order_type, return_direction, 
+    projet_delivery_time, order_source, order_belong, temperature_type, promtion_channels, 
+    sale_type, sender_addr_id, outer_id, close_time, edit_time, is_backmoney, backmoney_time, 
+    statis_state, is_logis_error, online_plat, sms_type, is_list, sfv_download, order_sort, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gshop_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gshop_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.demo.model.Order">
+    insert into gshop_order (order_id, order_sn, parent_order_id, 
+      parent_order_sn, user_id, opencity_id, 
+      order_status, refuse_type, shipping_time, 
+      pay_time, consignee, country, 
+      province, city, district, 
+      area, address, giver_name, 
+      giver_province, giver_city, giver_district, 
+      giver_area, giver_address, giver_mobile, 
+      sendtime, area_number, area_flag, 
+      sfarea, zipcode, tel, 
+      mobile, email, ip, best_date, 
+      is_together, best_time, shipping_id, 
+      sfairline, shipping_sn, warehouse_sn, 
+      received_time, invoice_id, integral, 
+      user_rank, favourable_id, pay_id, 
+      pay_fee, shipping_fee, sf_shipping_fee, 
+      product_amount, order_amount, discount, 
+      money_paid, balance, coupon_id, 
+      coupon_type, coupon_money, use_integral, 
+      integral_money, gift_card, gift_card_money, 
+      to_user, to_shop, greet_card, 
+      add_time, order_type, return_direction, 
+      projet_delivery_time, order_source, order_belong, 
+      temperature_type, promtion_channels, sale_type, 
+      sender_addr_id, outer_id, close_time, 
+      edit_time, is_backmoney, backmoney_time, 
+      statis_state, is_logis_error, online_plat, 
+      sms_type, is_list, sfv_download, 
+      order_sort, modified_time)
+    values (#{orderId,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{parentOrderId,jdbcType=INTEGER}, 
+      #{parentOrderSn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{opencityId,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=TINYINT}, #{refuseType,jdbcType=TINYINT}, #{shippingTime,jdbcType=INTEGER}, 
+      #{payTime,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, #{district,jdbcType=INTEGER}, 
+      #{area,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{giverName,jdbcType=VARCHAR}, 
+      #{giverProvince,jdbcType=INTEGER}, #{giverCity,jdbcType=INTEGER}, #{giverDistrict,jdbcType=INTEGER}, 
+      #{giverArea,jdbcType=INTEGER}, #{giverAddress,jdbcType=VARCHAR}, #{giverMobile,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=TINYINT}, #{areaNumber,jdbcType=VARCHAR}, #{areaFlag,jdbcType=BIT}, 
+      #{sfarea,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{ip,jdbcType=BIGINT}, #{bestDate,jdbcType=INTEGER}, 
+      #{isTogether,jdbcType=TINYINT}, #{bestTime,jdbcType=TINYINT}, #{shippingId,jdbcType=INTEGER}, 
+      #{sfairline,jdbcType=BIT}, #{shippingSn,jdbcType=VARCHAR}, #{warehouseSn,jdbcType=VARCHAR}, 
+      #{receivedTime,jdbcType=INTEGER}, #{invoiceId,jdbcType=INTEGER}, #{integral,jdbcType=INTEGER}, 
+      #{userRank,jdbcType=DECIMAL}, #{favourableId,jdbcType=VARCHAR}, #{payId,jdbcType=INTEGER}, 
+      #{payFee,jdbcType=INTEGER}, #{shippingFee,jdbcType=INTEGER}, #{sfShippingFee,jdbcType=INTEGER}, 
+      #{productAmount,jdbcType=INTEGER}, #{orderAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
+      #{moneyPaid,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, #{couponId,jdbcType=INTEGER}, 
+      #{couponType,jdbcType=BIT}, #{couponMoney,jdbcType=INTEGER}, #{useIntegral,jdbcType=INTEGER}, 
+      #{integralMoney,jdbcType=INTEGER}, #{giftCard,jdbcType=VARCHAR}, #{giftCardMoney,jdbcType=INTEGER}, 
+      #{toUser,jdbcType=VARCHAR}, #{toShop,jdbcType=VARCHAR}, #{greetCard,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=INTEGER}, #{orderType,jdbcType=BIT}, #{returnDirection,jdbcType=BIT}, 
+      #{projetDeliveryTime,jdbcType=INTEGER}, #{orderSource,jdbcType=BIT}, #{orderBelong,jdbcType=BIT}, 
+      #{temperatureType,jdbcType=BIT}, #{promtionChannels,jdbcType=BIT}, #{saleType,jdbcType=BIT}, 
+      #{senderAddrId,jdbcType=INTEGER}, #{outerId,jdbcType=VARCHAR}, #{closeTime,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=INTEGER}, #{isBackmoney,jdbcType=CHAR}, #{backmoneyTime,jdbcType=INTEGER}, 
+      #{statisState,jdbcType=BIT}, #{isLogisError,jdbcType=BIT}, #{onlinePlat,jdbcType=INTEGER}, 
+      #{smsType,jdbcType=BIT}, #{isList,jdbcType=INTEGER}, #{sfvDownload,jdbcType=TINYINT}, 
+      #{orderSort,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.model.Order">
+    insert into gshop_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="parentOrderId != null">
+        parent_order_id,
+      </if>
+      <if test="parentOrderSn != null">
+        parent_order_sn,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="opencityId != null">
+        opencity_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="refuseType != null">
+        refuse_type,
+      </if>
+      <if test="shippingTime != null">
+        shipping_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="giverName != null">
+        giver_name,
+      </if>
+      <if test="giverProvince != null">
+        giver_province,
+      </if>
+      <if test="giverCity != null">
+        giver_city,
+      </if>
+      <if test="giverDistrict != null">
+        giver_district,
+      </if>
+      <if test="giverArea != null">
+        giver_area,
+      </if>
+      <if test="giverAddress != null">
+        giver_address,
+      </if>
+      <if test="giverMobile != null">
+        giver_mobile,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="areaNumber != null">
+        area_number,
+      </if>
+      <if test="areaFlag != null">
+        area_flag,
+      </if>
+      <if test="sfarea != null">
+        sfarea,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="bestDate != null">
+        best_date,
+      </if>
+      <if test="isTogether != null">
+        is_together,
+      </if>
+      <if test="bestTime != null">
+        best_time,
+      </if>
+      <if test="shippingId != null">
+        shipping_id,
+      </if>
+      <if test="sfairline != null">
+        sfairline,
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn,
+      </if>
+      <if test="warehouseSn != null">
+        warehouse_sn,
+      </if>
+      <if test="receivedTime != null">
+        received_time,
+      </if>
+      <if test="invoiceId != null">
+        invoice_id,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="userRank != null">
+        user_rank,
+      </if>
+      <if test="favourableId != null">
+        favourable_id,
+      </if>
+      <if test="payId != null">
+        pay_id,
+      </if>
+      <if test="payFee != null">
+        pay_fee,
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee,
+      </if>
+      <if test="sfShippingFee != null">
+        sf_shipping_fee,
+      </if>
+      <if test="productAmount != null">
+        product_amount,
+      </if>
+      <if test="orderAmount != null">
+        order_amount,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="moneyPaid != null">
+        money_paid,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="couponType != null">
+        coupon_type,
+      </if>
+      <if test="couponMoney != null">
+        coupon_money,
+      </if>
+      <if test="useIntegral != null">
+        use_integral,
+      </if>
+      <if test="integralMoney != null">
+        integral_money,
+      </if>
+      <if test="giftCard != null">
+        gift_card,
+      </if>
+      <if test="giftCardMoney != null">
+        gift_card_money,
+      </if>
+      <if test="toUser != null">
+        to_user,
+      </if>
+      <if test="toShop != null">
+        to_shop,
+      </if>
+      <if test="greetCard != null">
+        greet_card,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="returnDirection != null">
+        return_direction,
+      </if>
+      <if test="projetDeliveryTime != null">
+        projet_delivery_time,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="orderBelong != null">
+        order_belong,
+      </if>
+      <if test="temperatureType != null">
+        temperature_type,
+      </if>
+      <if test="promtionChannels != null">
+        promtion_channels,
+      </if>
+      <if test="saleType != null">
+        sale_type,
+      </if>
+      <if test="senderAddrId != null">
+        sender_addr_id,
+      </if>
+      <if test="outerId != null">
+        outer_id,
+      </if>
+      <if test="closeTime != null">
+        close_time,
+      </if>
+      <if test="editTime != null">
+        edit_time,
+      </if>
+      <if test="isBackmoney != null">
+        is_backmoney,
+      </if>
+      <if test="backmoneyTime != null">
+        backmoney_time,
+      </if>
+      <if test="statisState != null">
+        statis_state,
+      </if>
+      <if test="isLogisError != null">
+        is_logis_error,
+      </if>
+      <if test="onlinePlat != null">
+        online_plat,
+      </if>
+      <if test="smsType != null">
+        sms_type,
+      </if>
+      <if test="isList != null">
+        is_list,
+      </if>
+      <if test="sfvDownload != null">
+        sfv_download,
+      </if>
+      <if test="orderSort != null">
+        order_sort,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrderId != null">
+        #{parentOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrderSn != null">
+        #{parentOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="opencityId != null">
+        #{opencityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="refuseType != null">
+        #{refuseType,jdbcType=TINYINT},
+      </if>
+      <if test="shippingTime != null">
+        #{shippingTime,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="giverName != null">
+        #{giverName,jdbcType=VARCHAR},
+      </if>
+      <if test="giverProvince != null">
+        #{giverProvince,jdbcType=INTEGER},
+      </if>
+      <if test="giverCity != null">
+        #{giverCity,jdbcType=INTEGER},
+      </if>
+      <if test="giverDistrict != null">
+        #{giverDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="giverArea != null">
+        #{giverArea,jdbcType=INTEGER},
+      </if>
+      <if test="giverAddress != null">
+        #{giverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="giverMobile != null">
+        #{giverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TINYINT},
+      </if>
+      <if test="areaNumber != null">
+        #{areaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFlag != null">
+        #{areaFlag,jdbcType=BIT},
+      </if>
+      <if test="sfarea != null">
+        #{sfarea,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=BIGINT},
+      </if>
+      <if test="bestDate != null">
+        #{bestDate,jdbcType=INTEGER},
+      </if>
+      <if test="isTogether != null">
+        #{isTogether,jdbcType=TINYINT},
+      </if>
+      <if test="bestTime != null">
+        #{bestTime,jdbcType=TINYINT},
+      </if>
+      <if test="shippingId != null">
+        #{shippingId,jdbcType=INTEGER},
+      </if>
+      <if test="sfairline != null">
+        #{sfairline,jdbcType=BIT},
+      </if>
+      <if test="shippingSn != null">
+        #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseSn != null">
+        #{warehouseSn,jdbcType=VARCHAR},
+      </if>
+      <if test="receivedTime != null">
+        #{receivedTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceId != null">
+        #{invoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="userRank != null">
+        #{userRank,jdbcType=DECIMAL},
+      </if>
+      <if test="favourableId != null">
+        #{favourableId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="payFee != null">
+        #{payFee,jdbcType=INTEGER},
+      </if>
+      <if test="shippingFee != null">
+        #{shippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="sfShippingFee != null">
+        #{sfShippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="moneyPaid != null">
+        #{moneyPaid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null">
+        #{couponType,jdbcType=BIT},
+      </if>
+      <if test="couponMoney != null">
+        #{couponMoney,jdbcType=INTEGER},
+      </if>
+      <if test="useIntegral != null">
+        #{useIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="integralMoney != null">
+        #{integralMoney,jdbcType=INTEGER},
+      </if>
+      <if test="giftCard != null">
+        #{giftCard,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCardMoney != null">
+        #{giftCardMoney,jdbcType=INTEGER},
+      </if>
+      <if test="toUser != null">
+        #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toShop != null">
+        #{toShop,jdbcType=VARCHAR},
+      </if>
+      <if test="greetCard != null">
+        #{greetCard,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=BIT},
+      </if>
+      <if test="returnDirection != null">
+        #{returnDirection,jdbcType=BIT},
+      </if>
+      <if test="projetDeliveryTime != null">
+        #{projetDeliveryTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="orderBelong != null">
+        #{orderBelong,jdbcType=BIT},
+      </if>
+      <if test="temperatureType != null">
+        #{temperatureType,jdbcType=BIT},
+      </if>
+      <if test="promtionChannels != null">
+        #{promtionChannels,jdbcType=BIT},
+      </if>
+      <if test="saleType != null">
+        #{saleType,jdbcType=BIT},
+      </if>
+      <if test="senderAddrId != null">
+        #{senderAddrId,jdbcType=INTEGER},
+      </if>
+      <if test="outerId != null">
+        #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=INTEGER},
+      </if>
+      <if test="isBackmoney != null">
+        #{isBackmoney,jdbcType=CHAR},
+      </if>
+      <if test="backmoneyTime != null">
+        #{backmoneyTime,jdbcType=INTEGER},
+      </if>
+      <if test="statisState != null">
+        #{statisState,jdbcType=BIT},
+      </if>
+      <if test="isLogisError != null">
+        #{isLogisError,jdbcType=BIT},
+      </if>
+      <if test="onlinePlat != null">
+        #{onlinePlat,jdbcType=INTEGER},
+      </if>
+      <if test="smsType != null">
+        #{smsType,jdbcType=BIT},
+      </if>
+      <if test="isList != null">
+        #{isList,jdbcType=INTEGER},
+      </if>
+      <if test="sfvDownload != null">
+        #{sfvDownload,jdbcType=TINYINT},
+      </if>
+      <if test="orderSort != null">
+        #{orderSort,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.model.Order">
+    update gshop_order
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrderId != null">
+        parent_order_id = #{parentOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrderSn != null">
+        parent_order_sn = #{parentOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="opencityId != null">
+        opencity_id = #{opencityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="refuseType != null">
+        refuse_type = #{refuseType,jdbcType=TINYINT},
+      </if>
+      <if test="shippingTime != null">
+        shipping_time = #{shippingTime,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="giverName != null">
+        giver_name = #{giverName,jdbcType=VARCHAR},
+      </if>
+      <if test="giverProvince != null">
+        giver_province = #{giverProvince,jdbcType=INTEGER},
+      </if>
+      <if test="giverCity != null">
+        giver_city = #{giverCity,jdbcType=INTEGER},
+      </if>
+      <if test="giverDistrict != null">
+        giver_district = #{giverDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="giverArea != null">
+        giver_area = #{giverArea,jdbcType=INTEGER},
+      </if>
+      <if test="giverAddress != null">
+        giver_address = #{giverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="giverMobile != null">
+        giver_mobile = #{giverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=TINYINT},
+      </if>
+      <if test="areaNumber != null">
+        area_number = #{areaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFlag != null">
+        area_flag = #{areaFlag,jdbcType=BIT},
+      </if>
+      <if test="sfarea != null">
+        sfarea = #{sfarea,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=BIGINT},
+      </if>
+      <if test="bestDate != null">
+        best_date = #{bestDate,jdbcType=INTEGER},
+      </if>
+      <if test="isTogether != null">
+        is_together = #{isTogether,jdbcType=TINYINT},
+      </if>
+      <if test="bestTime != null">
+        best_time = #{bestTime,jdbcType=TINYINT},
+      </if>
+      <if test="shippingId != null">
+        shipping_id = #{shippingId,jdbcType=INTEGER},
+      </if>
+      <if test="sfairline != null">
+        sfairline = #{sfairline,jdbcType=BIT},
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseSn != null">
+        warehouse_sn = #{warehouseSn,jdbcType=VARCHAR},
+      </if>
+      <if test="receivedTime != null">
+        received_time = #{receivedTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceId != null">
+        invoice_id = #{invoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="userRank != null">
+        user_rank = #{userRank,jdbcType=DECIMAL},
+      </if>
+      <if test="favourableId != null">
+        favourable_id = #{favourableId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        pay_id = #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="payFee != null">
+        pay_fee = #{payFee,jdbcType=INTEGER},
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee = #{shippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="sfShippingFee != null">
+        sf_shipping_fee = #{sfShippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        product_amount = #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        order_amount = #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="moneyPaid != null">
+        money_paid = #{moneyPaid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null">
+        coupon_type = #{couponType,jdbcType=BIT},
+      </if>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=INTEGER},
+      </if>
+      <if test="useIntegral != null">
+        use_integral = #{useIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="integralMoney != null">
+        integral_money = #{integralMoney,jdbcType=INTEGER},
+      </if>
+      <if test="giftCard != null">
+        gift_card = #{giftCard,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCardMoney != null">
+        gift_card_money = #{giftCardMoney,jdbcType=INTEGER},
+      </if>
+      <if test="toUser != null">
+        to_user = #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toShop != null">
+        to_shop = #{toShop,jdbcType=VARCHAR},
+      </if>
+      <if test="greetCard != null">
+        greet_card = #{greetCard,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=BIT},
+      </if>
+      <if test="returnDirection != null">
+        return_direction = #{returnDirection,jdbcType=BIT},
+      </if>
+      <if test="projetDeliveryTime != null">
+        projet_delivery_time = #{projetDeliveryTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="orderBelong != null">
+        order_belong = #{orderBelong,jdbcType=BIT},
+      </if>
+      <if test="temperatureType != null">
+        temperature_type = #{temperatureType,jdbcType=BIT},
+      </if>
+      <if test="promtionChannels != null">
+        promtion_channels = #{promtionChannels,jdbcType=BIT},
+      </if>
+      <if test="saleType != null">
+        sale_type = #{saleType,jdbcType=BIT},
+      </if>
+      <if test="senderAddrId != null">
+        sender_addr_id = #{senderAddrId,jdbcType=INTEGER},
+      </if>
+      <if test="outerId != null">
+        outer_id = #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=INTEGER},
+      </if>
+      <if test="isBackmoney != null">
+        is_backmoney = #{isBackmoney,jdbcType=CHAR},
+      </if>
+      <if test="backmoneyTime != null">
+        backmoney_time = #{backmoneyTime,jdbcType=INTEGER},
+      </if>
+      <if test="statisState != null">
+        statis_state = #{statisState,jdbcType=BIT},
+      </if>
+      <if test="isLogisError != null">
+        is_logis_error = #{isLogisError,jdbcType=BIT},
+      </if>
+      <if test="onlinePlat != null">
+        online_plat = #{onlinePlat,jdbcType=INTEGER},
+      </if>
+      <if test="smsType != null">
+        sms_type = #{smsType,jdbcType=BIT},
+      </if>
+      <if test="isList != null">
+        is_list = #{isList,jdbcType=INTEGER},
+      </if>
+      <if test="sfvDownload != null">
+        sfv_download = #{sfvDownload,jdbcType=TINYINT},
+      </if>
+      <if test="orderSort != null">
+        order_sort = #{orderSort,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.model.Order">
+    update gshop_order
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      parent_order_id = #{parentOrderId,jdbcType=INTEGER},
+      parent_order_sn = #{parentOrderSn,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      opencity_id = #{opencityId,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      refuse_type = #{refuseType,jdbcType=TINYINT},
+      shipping_time = #{shippingTime,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=INTEGER},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      country = #{country,jdbcType=INTEGER},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      area = #{area,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      giver_name = #{giverName,jdbcType=VARCHAR},
+      giver_province = #{giverProvince,jdbcType=INTEGER},
+      giver_city = #{giverCity,jdbcType=INTEGER},
+      giver_district = #{giverDistrict,jdbcType=INTEGER},
+      giver_area = #{giverArea,jdbcType=INTEGER},
+      giver_address = #{giverAddress,jdbcType=VARCHAR},
+      giver_mobile = #{giverMobile,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=TINYINT},
+      area_number = #{areaNumber,jdbcType=VARCHAR},
+      area_flag = #{areaFlag,jdbcType=BIT},
+      sfarea = #{sfarea,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=BIGINT},
+      best_date = #{bestDate,jdbcType=INTEGER},
+      is_together = #{isTogether,jdbcType=TINYINT},
+      best_time = #{bestTime,jdbcType=TINYINT},
+      shipping_id = #{shippingId,jdbcType=INTEGER},
+      sfairline = #{sfairline,jdbcType=BIT},
+      shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      warehouse_sn = #{warehouseSn,jdbcType=VARCHAR},
+      received_time = #{receivedTime,jdbcType=INTEGER},
+      invoice_id = #{invoiceId,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      user_rank = #{userRank,jdbcType=DECIMAL},
+      favourable_id = #{favourableId,jdbcType=VARCHAR},
+      pay_id = #{payId,jdbcType=INTEGER},
+      pay_fee = #{payFee,jdbcType=INTEGER},
+      shipping_fee = #{shippingFee,jdbcType=INTEGER},
+      sf_shipping_fee = #{sfShippingFee,jdbcType=INTEGER},
+      product_amount = #{productAmount,jdbcType=INTEGER},
+      order_amount = #{orderAmount,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      money_paid = #{moneyPaid,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      coupon_type = #{couponType,jdbcType=BIT},
+      coupon_money = #{couponMoney,jdbcType=INTEGER},
+      use_integral = #{useIntegral,jdbcType=INTEGER},
+      integral_money = #{integralMoney,jdbcType=INTEGER},
+      gift_card = #{giftCard,jdbcType=VARCHAR},
+      gift_card_money = #{giftCardMoney,jdbcType=INTEGER},
+      to_user = #{toUser,jdbcType=VARCHAR},
+      to_shop = #{toShop,jdbcType=VARCHAR},
+      greet_card = #{greetCard,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=BIT},
+      return_direction = #{returnDirection,jdbcType=BIT},
+      projet_delivery_time = #{projetDeliveryTime,jdbcType=INTEGER},
+      order_source = #{orderSource,jdbcType=BIT},
+      order_belong = #{orderBelong,jdbcType=BIT},
+      temperature_type = #{temperatureType,jdbcType=BIT},
+      promtion_channels = #{promtionChannels,jdbcType=BIT},
+      sale_type = #{saleType,jdbcType=BIT},
+      sender_addr_id = #{senderAddrId,jdbcType=INTEGER},
+      outer_id = #{outerId,jdbcType=VARCHAR},
+      close_time = #{closeTime,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=INTEGER},
+      is_backmoney = #{isBackmoney,jdbcType=CHAR},
+      backmoney_time = #{backmoneyTime,jdbcType=INTEGER},
+      statis_state = #{statisState,jdbcType=BIT},
+      is_logis_error = #{isLogisError,jdbcType=BIT},
+      online_plat = #{onlinePlat,jdbcType=INTEGER},
+      sms_type = #{smsType,jdbcType=BIT},
+      is_list = #{isList,jdbcType=INTEGER},
+      sfv_download = #{sfvDownload,jdbcType=TINYINT},
+      order_sort = #{orderSort,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.demo.model.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="parent_order_id" jdbcType="INTEGER" property="parentOrderId" />
+    <result column="parent_order_sn" jdbcType="VARCHAR" property="parentOrderSn" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="opencity_id" jdbcType="INTEGER" property="opencityId" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="refuse_type" jdbcType="TINYINT" property="refuseType" />
+    <result column="shipping_time" jdbcType="INTEGER" property="shippingTime" />
+    <result column="pay_time" jdbcType="INTEGER" property="payTime" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="country" jdbcType="INTEGER" property="country" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="giver_name" jdbcType="VARCHAR" property="giverName" />
+    <result column="giver_province" jdbcType="INTEGER" property="giverProvince" />
+    <result column="giver_city" jdbcType="INTEGER" property="giverCity" />
+    <result column="giver_district" jdbcType="INTEGER" property="giverDistrict" />
+    <result column="giver_area" jdbcType="INTEGER" property="giverArea" />
+    <result column="giver_address" jdbcType="VARCHAR" property="giverAddress" />
+    <result column="giver_mobile" jdbcType="VARCHAR" property="giverMobile" />
+    <result column="sendtime" jdbcType="TINYINT" property="sendtime" />
+    <result column="area_number" jdbcType="VARCHAR" property="areaNumber" />
+    <result column="area_flag" jdbcType="BIT" property="areaFlag" />
+    <result column="sfarea" jdbcType="VARCHAR" property="sfarea" />
+    <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="ip" jdbcType="BIGINT" property="ip" />
+    <result column="best_date" jdbcType="INTEGER" property="bestDate" />
+    <result column="is_together" jdbcType="TINYINT" property="isTogether" />
+    <result column="best_time" jdbcType="TINYINT" property="bestTime" />
+    <result column="shipping_id" jdbcType="INTEGER" property="shippingId" />
+    <result column="sfairline" jdbcType="BIT" property="sfairline" />
+    <result column="shipping_sn" jdbcType="VARCHAR" property="shippingSn" />
+    <result column="warehouse_sn" jdbcType="VARCHAR" property="warehouseSn" />
+    <result column="received_time" jdbcType="INTEGER" property="receivedTime" />
+    <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="user_rank" jdbcType="DECIMAL" property="userRank" />
+    <result column="favourable_id" jdbcType="VARCHAR" property="favourableId" />
+    <result column="pay_id" jdbcType="INTEGER" property="payId" />
+    <result column="pay_fee" jdbcType="INTEGER" property="payFee" />
+    <result column="shipping_fee" jdbcType="INTEGER" property="shippingFee" />
+    <result column="sf_shipping_fee" jdbcType="INTEGER" property="sfShippingFee" />
+    <result column="product_amount" jdbcType="INTEGER" property="productAmount" />
+    <result column="order_amount" jdbcType="INTEGER" property="orderAmount" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="money_paid" jdbcType="INTEGER" property="moneyPaid" />
+    <result column="balance" jdbcType="INTEGER" property="balance" />
+    <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="coupon_type" jdbcType="BIT" property="couponType" />
+    <result column="coupon_money" jdbcType="INTEGER" property="couponMoney" />
+    <result column="use_integral" jdbcType="INTEGER" property="useIntegral" />
+    <result column="integral_money" jdbcType="INTEGER" property="integralMoney" />
+    <result column="gift_card" jdbcType="VARCHAR" property="giftCard" />
+    <result column="gift_card_money" jdbcType="INTEGER" property="giftCardMoney" />
+    <result column="to_user" jdbcType="VARCHAR" property="toUser" />
+    <result column="to_shop" jdbcType="VARCHAR" property="toShop" />
+    <result column="greet_card" jdbcType="INTEGER" property="greetCard" />
+    <result column="add_time" jdbcType="INTEGER" property="addTime" />
+    <result column="order_type" jdbcType="BIT" property="orderType" />
+    <result column="return_direction" jdbcType="BIT" property="returnDirection" />
+    <result column="projet_delivery_time" jdbcType="INTEGER" property="projetDeliveryTime" />
+    <result column="order_source" jdbcType="BIT" property="orderSource" />
+    <result column="order_belong" jdbcType="BIT" property="orderBelong" />
+    <result column="temperature_type" jdbcType="BIT" property="temperatureType" />
+    <result column="promtion_channels" jdbcType="BIT" property="promtionChannels" />
+    <result column="sale_type" jdbcType="BIT" property="saleType" />
+    <result column="sender_addr_id" jdbcType="INTEGER" property="senderAddrId" />
+    <result column="outer_id" jdbcType="VARCHAR" property="outerId" />
+    <result column="close_time" jdbcType="INTEGER" property="closeTime" />
+    <result column="edit_time" jdbcType="INTEGER" property="editTime" />
+    <result column="is_backmoney" jdbcType="CHAR" property="isBackmoney" />
+    <result column="backmoney_time" jdbcType="INTEGER" property="backmoneyTime" />
+    <result column="statis_state" jdbcType="BIT" property="statisState" />
+    <result column="is_logis_error" jdbcType="BIT" property="isLogisError" />
+    <result column="online_plat" jdbcType="INTEGER" property="onlinePlat" />
+    <result column="sms_type" jdbcType="BIT" property="smsType" />
+    <result column="is_list" jdbcType="INTEGER" property="isList" />
+    <result column="sfv_download" jdbcType="TINYINT" property="sfvDownload" />
+    <result column="order_sort" jdbcType="TINYINT" property="orderSort" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_sn, parent_order_id, parent_order_sn, user_id, opencity_id, order_status, 
+    refuse_type, shipping_time, pay_time, consignee, country, province, city, district, 
+    area, address, giver_name, giver_province, giver_city, giver_district, giver_area, 
+    giver_address, giver_mobile, sendtime, area_number, area_flag, sfarea, zipcode, tel, 
+    mobile, email, ip, best_date, is_together, best_time, shipping_id, sfairline, shipping_sn, 
+    warehouse_sn, received_time, invoice_id, integral, user_rank, favourable_id, pay_id, 
+    pay_fee, shipping_fee, sf_shipping_fee, product_amount, order_amount, discount, money_paid, 
+    balance, coupon_id, coupon_type, coupon_money, use_integral, integral_money, gift_card, 
+    gift_card_money, to_user, to_shop, greet_card, add_time, order_type, return_direction, 
+    projet_delivery_time, order_source, order_belong, temperature_type, promtion_channels, 
+    sale_type, sender_addr_id, outer_id, close_time, edit_time, is_backmoney, backmoney_time, 
+    statis_state, is_logis_error, online_plat, sms_type, is_list, sfv_download, order_sort, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gshop_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gshop_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.demo.model.Order">
+    insert into gshop_order (order_id, order_sn, parent_order_id, 
+      parent_order_sn, user_id, opencity_id, 
+      order_status, refuse_type, shipping_time, 
+      pay_time, consignee, country, 
+      province, city, district, 
+      area, address, giver_name, 
+      giver_province, giver_city, giver_district, 
+      giver_area, giver_address, giver_mobile, 
+      sendtime, area_number, area_flag, 
+      sfarea, zipcode, tel, 
+      mobile, email, ip, best_date, 
+      is_together, best_time, shipping_id, 
+      sfairline, shipping_sn, warehouse_sn, 
+      received_time, invoice_id, integral, 
+      user_rank, favourable_id, pay_id, 
+      pay_fee, shipping_fee, sf_shipping_fee, 
+      product_amount, order_amount, discount, 
+      money_paid, balance, coupon_id, 
+      coupon_type, coupon_money, use_integral, 
+      integral_money, gift_card, gift_card_money, 
+      to_user, to_shop, greet_card, 
+      add_time, order_type, return_direction, 
+      projet_delivery_time, order_source, order_belong, 
+      temperature_type, promtion_channels, sale_type, 
+      sender_addr_id, outer_id, close_time, 
+      edit_time, is_backmoney, backmoney_time, 
+      statis_state, is_logis_error, online_plat, 
+      sms_type, is_list, sfv_download, 
+      order_sort, modified_time)
+    values (#{orderId,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{parentOrderId,jdbcType=INTEGER}, 
+      #{parentOrderSn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{opencityId,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=TINYINT}, #{refuseType,jdbcType=TINYINT}, #{shippingTime,jdbcType=INTEGER}, 
+      #{payTime,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, #{district,jdbcType=INTEGER}, 
+      #{area,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{giverName,jdbcType=VARCHAR}, 
+      #{giverProvince,jdbcType=INTEGER}, #{giverCity,jdbcType=INTEGER}, #{giverDistrict,jdbcType=INTEGER}, 
+      #{giverArea,jdbcType=INTEGER}, #{giverAddress,jdbcType=VARCHAR}, #{giverMobile,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=TINYINT}, #{areaNumber,jdbcType=VARCHAR}, #{areaFlag,jdbcType=BIT}, 
+      #{sfarea,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{ip,jdbcType=BIGINT}, #{bestDate,jdbcType=INTEGER}, 
+      #{isTogether,jdbcType=TINYINT}, #{bestTime,jdbcType=TINYINT}, #{shippingId,jdbcType=INTEGER}, 
+      #{sfairline,jdbcType=BIT}, #{shippingSn,jdbcType=VARCHAR}, #{warehouseSn,jdbcType=VARCHAR}, 
+      #{receivedTime,jdbcType=INTEGER}, #{invoiceId,jdbcType=INTEGER}, #{integral,jdbcType=INTEGER}, 
+      #{userRank,jdbcType=DECIMAL}, #{favourableId,jdbcType=VARCHAR}, #{payId,jdbcType=INTEGER}, 
+      #{payFee,jdbcType=INTEGER}, #{shippingFee,jdbcType=INTEGER}, #{sfShippingFee,jdbcType=INTEGER}, 
+      #{productAmount,jdbcType=INTEGER}, #{orderAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
+      #{moneyPaid,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, #{couponId,jdbcType=INTEGER}, 
+      #{couponType,jdbcType=BIT}, #{couponMoney,jdbcType=INTEGER}, #{useIntegral,jdbcType=INTEGER}, 
+      #{integralMoney,jdbcType=INTEGER}, #{giftCard,jdbcType=VARCHAR}, #{giftCardMoney,jdbcType=INTEGER}, 
+      #{toUser,jdbcType=VARCHAR}, #{toShop,jdbcType=VARCHAR}, #{greetCard,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=INTEGER}, #{orderType,jdbcType=BIT}, #{returnDirection,jdbcType=BIT}, 
+      #{projetDeliveryTime,jdbcType=INTEGER}, #{orderSource,jdbcType=BIT}, #{orderBelong,jdbcType=BIT}, 
+      #{temperatureType,jdbcType=BIT}, #{promtionChannels,jdbcType=BIT}, #{saleType,jdbcType=BIT}, 
+      #{senderAddrId,jdbcType=INTEGER}, #{outerId,jdbcType=VARCHAR}, #{closeTime,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=INTEGER}, #{isBackmoney,jdbcType=CHAR}, #{backmoneyTime,jdbcType=INTEGER}, 
+      #{statisState,jdbcType=BIT}, #{isLogisError,jdbcType=BIT}, #{onlinePlat,jdbcType=INTEGER}, 
+      #{smsType,jdbcType=BIT}, #{isList,jdbcType=INTEGER}, #{sfvDownload,jdbcType=TINYINT}, 
+      #{orderSort,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.model.Order">
+    insert into gshop_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="parentOrderId != null">
+        parent_order_id,
+      </if>
+      <if test="parentOrderSn != null">
+        parent_order_sn,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="opencityId != null">
+        opencity_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="refuseType != null">
+        refuse_type,
+      </if>
+      <if test="shippingTime != null">
+        shipping_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="giverName != null">
+        giver_name,
+      </if>
+      <if test="giverProvince != null">
+        giver_province,
+      </if>
+      <if test="giverCity != null">
+        giver_city,
+      </if>
+      <if test="giverDistrict != null">
+        giver_district,
+      </if>
+      <if test="giverArea != null">
+        giver_area,
+      </if>
+      <if test="giverAddress != null">
+        giver_address,
+      </if>
+      <if test="giverMobile != null">
+        giver_mobile,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="areaNumber != null">
+        area_number,
+      </if>
+      <if test="areaFlag != null">
+        area_flag,
+      </if>
+      <if test="sfarea != null">
+        sfarea,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="bestDate != null">
+        best_date,
+      </if>
+      <if test="isTogether != null">
+        is_together,
+      </if>
+      <if test="bestTime != null">
+        best_time,
+      </if>
+      <if test="shippingId != null">
+        shipping_id,
+      </if>
+      <if test="sfairline != null">
+        sfairline,
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn,
+      </if>
+      <if test="warehouseSn != null">
+        warehouse_sn,
+      </if>
+      <if test="receivedTime != null">
+        received_time,
+      </if>
+      <if test="invoiceId != null">
+        invoice_id,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="userRank != null">
+        user_rank,
+      </if>
+      <if test="favourableId != null">
+        favourable_id,
+      </if>
+      <if test="payId != null">
+        pay_id,
+      </if>
+      <if test="payFee != null">
+        pay_fee,
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee,
+      </if>
+      <if test="sfShippingFee != null">
+        sf_shipping_fee,
+      </if>
+      <if test="productAmount != null">
+        product_amount,
+      </if>
+      <if test="orderAmount != null">
+        order_amount,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="moneyPaid != null">
+        money_paid,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="couponType != null">
+        coupon_type,
+      </if>
+      <if test="couponMoney != null">
+        coupon_money,
+      </if>
+      <if test="useIntegral != null">
+        use_integral,
+      </if>
+      <if test="integralMoney != null">
+        integral_money,
+      </if>
+      <if test="giftCard != null">
+        gift_card,
+      </if>
+      <if test="giftCardMoney != null">
+        gift_card_money,
+      </if>
+      <if test="toUser != null">
+        to_user,
+      </if>
+      <if test="toShop != null">
+        to_shop,
+      </if>
+      <if test="greetCard != null">
+        greet_card,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="returnDirection != null">
+        return_direction,
+      </if>
+      <if test="projetDeliveryTime != null">
+        projet_delivery_time,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="orderBelong != null">
+        order_belong,
+      </if>
+      <if test="temperatureType != null">
+        temperature_type,
+      </if>
+      <if test="promtionChannels != null">
+        promtion_channels,
+      </if>
+      <if test="saleType != null">
+        sale_type,
+      </if>
+      <if test="senderAddrId != null">
+        sender_addr_id,
+      </if>
+      <if test="outerId != null">
+        outer_id,
+      </if>
+      <if test="closeTime != null">
+        close_time,
+      </if>
+      <if test="editTime != null">
+        edit_time,
+      </if>
+      <if test="isBackmoney != null">
+        is_backmoney,
+      </if>
+      <if test="backmoneyTime != null">
+        backmoney_time,
+      </if>
+      <if test="statisState != null">
+        statis_state,
+      </if>
+      <if test="isLogisError != null">
+        is_logis_error,
+      </if>
+      <if test="onlinePlat != null">
+        online_plat,
+      </if>
+      <if test="smsType != null">
+        sms_type,
+      </if>
+      <if test="isList != null">
+        is_list,
+      </if>
+      <if test="sfvDownload != null">
+        sfv_download,
+      </if>
+      <if test="orderSort != null">
+        order_sort,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrderId != null">
+        #{parentOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrderSn != null">
+        #{parentOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="opencityId != null">
+        #{opencityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="refuseType != null">
+        #{refuseType,jdbcType=TINYINT},
+      </if>
+      <if test="shippingTime != null">
+        #{shippingTime,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="giverName != null">
+        #{giverName,jdbcType=VARCHAR},
+      </if>
+      <if test="giverProvince != null">
+        #{giverProvince,jdbcType=INTEGER},
+      </if>
+      <if test="giverCity != null">
+        #{giverCity,jdbcType=INTEGER},
+      </if>
+      <if test="giverDistrict != null">
+        #{giverDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="giverArea != null">
+        #{giverArea,jdbcType=INTEGER},
+      </if>
+      <if test="giverAddress != null">
+        #{giverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="giverMobile != null">
+        #{giverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TINYINT},
+      </if>
+      <if test="areaNumber != null">
+        #{areaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFlag != null">
+        #{areaFlag,jdbcType=BIT},
+      </if>
+      <if test="sfarea != null">
+        #{sfarea,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=BIGINT},
+      </if>
+      <if test="bestDate != null">
+        #{bestDate,jdbcType=INTEGER},
+      </if>
+      <if test="isTogether != null">
+        #{isTogether,jdbcType=TINYINT},
+      </if>
+      <if test="bestTime != null">
+        #{bestTime,jdbcType=TINYINT},
+      </if>
+      <if test="shippingId != null">
+        #{shippingId,jdbcType=INTEGER},
+      </if>
+      <if test="sfairline != null">
+        #{sfairline,jdbcType=BIT},
+      </if>
+      <if test="shippingSn != null">
+        #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseSn != null">
+        #{warehouseSn,jdbcType=VARCHAR},
+      </if>
+      <if test="receivedTime != null">
+        #{receivedTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceId != null">
+        #{invoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="userRank != null">
+        #{userRank,jdbcType=DECIMAL},
+      </if>
+      <if test="favourableId != null">
+        #{favourableId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="payFee != null">
+        #{payFee,jdbcType=INTEGER},
+      </if>
+      <if test="shippingFee != null">
+        #{shippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="sfShippingFee != null">
+        #{sfShippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="moneyPaid != null">
+        #{moneyPaid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null">
+        #{couponType,jdbcType=BIT},
+      </if>
+      <if test="couponMoney != null">
+        #{couponMoney,jdbcType=INTEGER},
+      </if>
+      <if test="useIntegral != null">
+        #{useIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="integralMoney != null">
+        #{integralMoney,jdbcType=INTEGER},
+      </if>
+      <if test="giftCard != null">
+        #{giftCard,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCardMoney != null">
+        #{giftCardMoney,jdbcType=INTEGER},
+      </if>
+      <if test="toUser != null">
+        #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toShop != null">
+        #{toShop,jdbcType=VARCHAR},
+      </if>
+      <if test="greetCard != null">
+        #{greetCard,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=BIT},
+      </if>
+      <if test="returnDirection != null">
+        #{returnDirection,jdbcType=BIT},
+      </if>
+      <if test="projetDeliveryTime != null">
+        #{projetDeliveryTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="orderBelong != null">
+        #{orderBelong,jdbcType=BIT},
+      </if>
+      <if test="temperatureType != null">
+        #{temperatureType,jdbcType=BIT},
+      </if>
+      <if test="promtionChannels != null">
+        #{promtionChannels,jdbcType=BIT},
+      </if>
+      <if test="saleType != null">
+        #{saleType,jdbcType=BIT},
+      </if>
+      <if test="senderAddrId != null">
+        #{senderAddrId,jdbcType=INTEGER},
+      </if>
+      <if test="outerId != null">
+        #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=INTEGER},
+      </if>
+      <if test="isBackmoney != null">
+        #{isBackmoney,jdbcType=CHAR},
+      </if>
+      <if test="backmoneyTime != null">
+        #{backmoneyTime,jdbcType=INTEGER},
+      </if>
+      <if test="statisState != null">
+        #{statisState,jdbcType=BIT},
+      </if>
+      <if test="isLogisError != null">
+        #{isLogisError,jdbcType=BIT},
+      </if>
+      <if test="onlinePlat != null">
+        #{onlinePlat,jdbcType=INTEGER},
+      </if>
+      <if test="smsType != null">
+        #{smsType,jdbcType=BIT},
+      </if>
+      <if test="isList != null">
+        #{isList,jdbcType=INTEGER},
+      </if>
+      <if test="sfvDownload != null">
+        #{sfvDownload,jdbcType=TINYINT},
+      </if>
+      <if test="orderSort != null">
+        #{orderSort,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.model.Order">
+    update gshop_order
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrderId != null">
+        parent_order_id = #{parentOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrderSn != null">
+        parent_order_sn = #{parentOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="opencityId != null">
+        opencity_id = #{opencityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="refuseType != null">
+        refuse_type = #{refuseType,jdbcType=TINYINT},
+      </if>
+      <if test="shippingTime != null">
+        shipping_time = #{shippingTime,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="giverName != null">
+        giver_name = #{giverName,jdbcType=VARCHAR},
+      </if>
+      <if test="giverProvince != null">
+        giver_province = #{giverProvince,jdbcType=INTEGER},
+      </if>
+      <if test="giverCity != null">
+        giver_city = #{giverCity,jdbcType=INTEGER},
+      </if>
+      <if test="giverDistrict != null">
+        giver_district = #{giverDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="giverArea != null">
+        giver_area = #{giverArea,jdbcType=INTEGER},
+      </if>
+      <if test="giverAddress != null">
+        giver_address = #{giverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="giverMobile != null">
+        giver_mobile = #{giverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=TINYINT},
+      </if>
+      <if test="areaNumber != null">
+        area_number = #{areaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="areaFlag != null">
+        area_flag = #{areaFlag,jdbcType=BIT},
+      </if>
+      <if test="sfarea != null">
+        sfarea = #{sfarea,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=BIGINT},
+      </if>
+      <if test="bestDate != null">
+        best_date = #{bestDate,jdbcType=INTEGER},
+      </if>
+      <if test="isTogether != null">
+        is_together = #{isTogether,jdbcType=TINYINT},
+      </if>
+      <if test="bestTime != null">
+        best_time = #{bestTime,jdbcType=TINYINT},
+      </if>
+      <if test="shippingId != null">
+        shipping_id = #{shippingId,jdbcType=INTEGER},
+      </if>
+      <if test="sfairline != null">
+        sfairline = #{sfairline,jdbcType=BIT},
+      </if>
+      <if test="shippingSn != null">
+        shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseSn != null">
+        warehouse_sn = #{warehouseSn,jdbcType=VARCHAR},
+      </if>
+      <if test="receivedTime != null">
+        received_time = #{receivedTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceId != null">
+        invoice_id = #{invoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="userRank != null">
+        user_rank = #{userRank,jdbcType=DECIMAL},
+      </if>
+      <if test="favourableId != null">
+        favourable_id = #{favourableId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        pay_id = #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="payFee != null">
+        pay_fee = #{payFee,jdbcType=INTEGER},
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee = #{shippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="sfShippingFee != null">
+        sf_shipping_fee = #{sfShippingFee,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        product_amount = #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        order_amount = #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="moneyPaid != null">
+        money_paid = #{moneyPaid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null">
+        coupon_type = #{couponType,jdbcType=BIT},
+      </if>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=INTEGER},
+      </if>
+      <if test="useIntegral != null">
+        use_integral = #{useIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="integralMoney != null">
+        integral_money = #{integralMoney,jdbcType=INTEGER},
+      </if>
+      <if test="giftCard != null">
+        gift_card = #{giftCard,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCardMoney != null">
+        gift_card_money = #{giftCardMoney,jdbcType=INTEGER},
+      </if>
+      <if test="toUser != null">
+        to_user = #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toShop != null">
+        to_shop = #{toShop,jdbcType=VARCHAR},
+      </if>
+      <if test="greetCard != null">
+        greet_card = #{greetCard,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=BIT},
+      </if>
+      <if test="returnDirection != null">
+        return_direction = #{returnDirection,jdbcType=BIT},
+      </if>
+      <if test="projetDeliveryTime != null">
+        projet_delivery_time = #{projetDeliveryTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="orderBelong != null">
+        order_belong = #{orderBelong,jdbcType=BIT},
+      </if>
+      <if test="temperatureType != null">
+        temperature_type = #{temperatureType,jdbcType=BIT},
+      </if>
+      <if test="promtionChannels != null">
+        promtion_channels = #{promtionChannels,jdbcType=BIT},
+      </if>
+      <if test="saleType != null">
+        sale_type = #{saleType,jdbcType=BIT},
+      </if>
+      <if test="senderAddrId != null">
+        sender_addr_id = #{senderAddrId,jdbcType=INTEGER},
+      </if>
+      <if test="outerId != null">
+        outer_id = #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=INTEGER},
+      </if>
+      <if test="isBackmoney != null">
+        is_backmoney = #{isBackmoney,jdbcType=CHAR},
+      </if>
+      <if test="backmoneyTime != null">
+        backmoney_time = #{backmoneyTime,jdbcType=INTEGER},
+      </if>
+      <if test="statisState != null">
+        statis_state = #{statisState,jdbcType=BIT},
+      </if>
+      <if test="isLogisError != null">
+        is_logis_error = #{isLogisError,jdbcType=BIT},
+      </if>
+      <if test="onlinePlat != null">
+        online_plat = #{onlinePlat,jdbcType=INTEGER},
+      </if>
+      <if test="smsType != null">
+        sms_type = #{smsType,jdbcType=BIT},
+      </if>
+      <if test="isList != null">
+        is_list = #{isList,jdbcType=INTEGER},
+      </if>
+      <if test="sfvDownload != null">
+        sfv_download = #{sfvDownload,jdbcType=TINYINT},
+      </if>
+      <if test="orderSort != null">
+        order_sort = #{orderSort,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.model.Order">
+    update gshop_order
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      parent_order_id = #{parentOrderId,jdbcType=INTEGER},
+      parent_order_sn = #{parentOrderSn,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      opencity_id = #{opencityId,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      refuse_type = #{refuseType,jdbcType=TINYINT},
+      shipping_time = #{shippingTime,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=INTEGER},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      country = #{country,jdbcType=INTEGER},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      area = #{area,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      giver_name = #{giverName,jdbcType=VARCHAR},
+      giver_province = #{giverProvince,jdbcType=INTEGER},
+      giver_city = #{giverCity,jdbcType=INTEGER},
+      giver_district = #{giverDistrict,jdbcType=INTEGER},
+      giver_area = #{giverArea,jdbcType=INTEGER},
+      giver_address = #{giverAddress,jdbcType=VARCHAR},
+      giver_mobile = #{giverMobile,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=TINYINT},
+      area_number = #{areaNumber,jdbcType=VARCHAR},
+      area_flag = #{areaFlag,jdbcType=BIT},
+      sfarea = #{sfarea,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=BIGINT},
+      best_date = #{bestDate,jdbcType=INTEGER},
+      is_together = #{isTogether,jdbcType=TINYINT},
+      best_time = #{bestTime,jdbcType=TINYINT},
+      shipping_id = #{shippingId,jdbcType=INTEGER},
+      sfairline = #{sfairline,jdbcType=BIT},
+      shipping_sn = #{shippingSn,jdbcType=VARCHAR},
+      warehouse_sn = #{warehouseSn,jdbcType=VARCHAR},
+      received_time = #{receivedTime,jdbcType=INTEGER},
+      invoice_id = #{invoiceId,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      user_rank = #{userRank,jdbcType=DECIMAL},
+      favourable_id = #{favourableId,jdbcType=VARCHAR},
+      pay_id = #{payId,jdbcType=INTEGER},
+      pay_fee = #{payFee,jdbcType=INTEGER},
+      shipping_fee = #{shippingFee,jdbcType=INTEGER},
+      sf_shipping_fee = #{sfShippingFee,jdbcType=INTEGER},
+      product_amount = #{productAmount,jdbcType=INTEGER},
+      order_amount = #{orderAmount,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      money_paid = #{moneyPaid,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      coupon_type = #{couponType,jdbcType=BIT},
+      coupon_money = #{couponMoney,jdbcType=INTEGER},
+      use_integral = #{useIntegral,jdbcType=INTEGER},
+      integral_money = #{integralMoney,jdbcType=INTEGER},
+      gift_card = #{giftCard,jdbcType=VARCHAR},
+      gift_card_money = #{giftCardMoney,jdbcType=INTEGER},
+      to_user = #{toUser,jdbcType=VARCHAR},
+      to_shop = #{toShop,jdbcType=VARCHAR},
+      greet_card = #{greetCard,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=BIT},
+      return_direction = #{returnDirection,jdbcType=BIT},
+      projet_delivery_time = #{projetDeliveryTime,jdbcType=INTEGER},
+      order_source = #{orderSource,jdbcType=BIT},
+      order_belong = #{orderBelong,jdbcType=BIT},
+      temperature_type = #{temperatureType,jdbcType=BIT},
+      promtion_channels = #{promtionChannels,jdbcType=BIT},
+      sale_type = #{saleType,jdbcType=BIT},
+      sender_addr_id = #{senderAddrId,jdbcType=INTEGER},
+      outer_id = #{outerId,jdbcType=VARCHAR},
+      close_time = #{closeTime,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=INTEGER},
+      is_backmoney = #{isBackmoney,jdbcType=CHAR},
+      backmoney_time = #{backmoneyTime,jdbcType=INTEGER},
+      statis_state = #{statisState,jdbcType=BIT},
+      is_logis_error = #{isLogisError,jdbcType=BIT},
+      online_plat = #{onlinePlat,jdbcType=INTEGER},
+      sms_type = #{smsType,jdbcType=BIT},
+      is_list = #{isList,jdbcType=INTEGER},
+      sfv_download = #{sfvDownload,jdbcType=TINYINT},
+      order_sort = #{orderSort,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>
