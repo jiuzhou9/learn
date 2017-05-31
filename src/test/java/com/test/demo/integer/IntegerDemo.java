@@ -8,10 +8,12 @@ import org.junit.Test;
 public class IntegerDemo {
     /**
      * Integer的equals方法
+     * Integer类型变量打印
      */
     @Test
     public void test01(){
         Integer integer = 2;
         System.out.println(integer.equals(2));
+        System.out.println(integer.toString());
     }
 }
