@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by jiuzhou on 2017/5/28.
  */
-public class Demo {
+public class ThreadDemo {
     /**
      * 继承的方式创建线程
      */
