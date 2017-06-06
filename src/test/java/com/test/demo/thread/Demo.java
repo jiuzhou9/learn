@@ -5,9 +5,10 @@ import org.junit.Test;
 /**
  * Created by jiuzhou on 2017/5/28.
  */
-public class ThreadDemo {
+public class Demo {
     /**
-     * 继承的方式创建线程
+     * 继承Thread的方式创建线程
+     * 测试join方法作用
      */
     @Test
     public void testJoin(){
@@ -33,10 +34,11 @@ public class ThreadDemo {
 
     /**
      * 实现runnable接口方式创建线程
+     * 测试join方法作用
      */
     @Test
     public void testRunnable(){
-        RunnableImpl r1 = new RunnableImpl();
+        RunnableNO1 r1 = new RunnableNO1();
         Thread t1 = new Thread(r1);
         Thread t2 = new Thread(r1);
         t1.setName("第一条线程");
