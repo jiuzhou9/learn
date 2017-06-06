@@ -54,4 +54,43 @@ public class Demo {
 
         System.out.println(t1.isAlive());
     }
+
+    /**
+     * Thread和Runnable的区别：Runnable可以共享资源，但是Thread不可以共享资源
+     */
+    @Test
+    public void testThreadTicket(){
+        ThreadTicket t1 = new ThreadTicket();
+        ThreadTicket t2 = new ThreadTicket();
+        t1.setName("t1");
+        t2.setName("t2");
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Thread和Runnable的区别：Runnable可以共享资源，但是Thread不可以共享资源
+     */
+    @Test
+    public void testRunnableTicket(){
+        RunnableTicket runnableTicket = new RunnableTicket();
+        Thread t1 = new Thread(runnableTicket);
+        Thread t2 = new Thread(runnableTicket);
+        t1.setName("t1");
+        t2.setName("t2");
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
