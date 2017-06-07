@@ -5,22 +5,36 @@
 
 <generatorConfiguration>
     <!--导入属性配置-->
-    <!--<properties resource="E:\wjz\learn\src\test\resources"></properties>-->
+    <!--http://mbg.cndocs.tk/configreference/properties.html
+        resource：加载classpath下资源
+        url：加载任意位置资源文件
+    -->
+    <properties url="file:///F:\idea_space\learn_master\learn\src\test\resources\mysql.properties"></properties>
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
+<!--
     <classPathEntry location="C:\\Users\\01210368\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.20\\mysql-connector-java-5.1.20.jar"/>
-
+-->
+    <classPathEntry location="${jdbc.driverLocation}"/>
     <context id="default" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <jdbcConnection
+                driverClass="${jdbc.driverClass}"
+                connectionURL="${jdbc.connectionURL}"
+                userId="${jdbc.userId}"
+                password="${jdbc.password}">
+        </jdbcConnection>
+        <!--
+        不加载文件方式
+        <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
                 connectionURL="jdbc:mysql://10.103.16.186:3306/gshop_db"
                 userId="dev_all_186"
                 password="sjUUPGt5kv2L">
-        </jdbcConnection>
+        </jdbcConnection>-->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
