@@ -39,8 +39,11 @@ public class JsonDemo {
         System.out.println(string);
 
         //解析json字符串
+        //1.将json字符串转换成jsonObject
         JSONObject jsonObjectStudent = JSONObject.parseObject(string);
+        //2.jsonObject获取age键的值，通过强转自己确定返回值类型
         Integer age = (Integer) jsonObjectStudent.get("age");
+        //3.jsonObject获取addresses的值，通过强转自己确定返回值类型
         List<String> addressesList = (List<String>) jsonObjectStudent.get("addresses");
         System.out.println(addressesList);
     }
