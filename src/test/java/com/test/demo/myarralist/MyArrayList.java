@@ -91,6 +91,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
 
     /**
      * The size of the ArrayList (the number of elements it contains).
+     * 集合ArrayList容器中元素的个数
      *
      * @serial
      */
@@ -129,12 +130,15 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * Constructs a list containing the elements of the specified
      * collection, in the order they are returned by the collection's
      * iterator.
+     * 构造一个集合包含指定集合中的所有元素
      *
      * @param c the collection whose elements are to be placed into this list
      * @throws NullPointerException if the specified collection is null
      */
     public MyArrayList(Collection<? extends E> c) {
+        //将参数集合数组化，并将集合中的元素放进当前集合中的容器数组里
         elementData = c.toArray();
+        //集合中元素的个数就是集合中数组的长度
         size = elementData.length;
         // c.toArray might (incorrectly) not return Object[] (see 6260652)
         if (elementData.getClass() != Object[].class)
