@@ -40,4 +40,10 @@ public class MyArrayListTest {
         MyArrayList<String> strings = new MyArrayList<String>(list);
     }
 
+    @Test
+    public void test(){
+        int i = 1501171199 - 1500566400;
+        System.out.println(i);
+    }
+
 }
