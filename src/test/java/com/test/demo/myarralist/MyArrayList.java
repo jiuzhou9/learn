@@ -171,10 +171,19 @@ public class MyArrayList<E> extends MyAbstractList<E>
     }
 
     private void ensureCapacityInternal(int minCapacity) {
+        System.out.println("modCount:"+modCount);
         modCount++;
         // overflow-conscious code
-        if (minCapacity - elementData.length > 0)
+        //如果添加元素后的长度 - 集合中容器的长度 > 0
+        if (minCapacity - elementData.length > 0){
+            System.out.println("扩容前");
+            System.out.println("minCapacity:"+minCapacity);
+            System.out.println("elementData.length:"+elementData.length);
             grow(minCapacity);
+            System.out.println("扩容后");
+            System.out.println("minCapacity:"+minCapacity);
+            System.out.println("elementData.length:"+elementData.length);
+        }
     }
 
     /**
@@ -193,8 +202,11 @@ public class MyArrayList<E> extends MyAbstractList<E>
      */
     private void grow(int minCapacity) {
         // overflow-conscious code
+        //原数组长度
         int oldCapacity = elementData.length;
+        //新数组长度 = 原数组长度 + 原数组长度的1/2
         int newCapacity = oldCapacity + (oldCapacity >> 1);
+        //如果
         if (newCapacity - minCapacity < 0)
             newCapacity = minCapacity;
         if (newCapacity - MAX_ARRAY_SIZE > 0)
@@ -398,7 +410,9 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * @return <tt>true</tt> (as specified by {@link Collection#add})
      */
     public boolean add(E e) {
+        //确保添加新的元素后不会越界，这个方法里有可能会改变集合中数组的长度
         ensureCapacityInternal(size + 1);  // Increments modCount!!
+        //数组中添加新的元素
         elementData[size++] = e;
         return true;
     }

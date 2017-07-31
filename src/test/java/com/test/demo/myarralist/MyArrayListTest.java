@@ -40,10 +40,38 @@ public class MyArrayListTest {
         MyArrayList<String> strings = new MyArrayList<String>(list);
     }
 
+
+    /**
+     * 集合的自动扩容
+     */
+    @Test
+    public void testAdd(){
+        MyArrayList<String> strings = new MyArrayList<String>();
+        strings.add("a");
+        strings.add("b");
+        strings.add("c");
+        strings.add("d");
+        strings.add("e");
+        strings.add("f");
+        strings.add("g");
+        strings.add("h");
+        strings.add("i");
+        strings.add("j");
+        strings.add("k");//集合中数组扩容
+    }
+
     @Test
     public void test(){
-        int i = 1501171199 - 1500566400;
-        System.out.println(i);
+        //右移n代表：除以2的n次幂，取整
+        System.out.println(1 >> 1);
+        System.out.println(12 >> 1);
+        System.out.println(13 >> 1);
+        System.out.println(2 >> 2);
+        System.out.println(8 >> 2);
+
+        //左移n代表:乘以2的n次幂
+        System.out.println(2 << 2);
+        System.out.println(2 << 3);
     }
 
 }
