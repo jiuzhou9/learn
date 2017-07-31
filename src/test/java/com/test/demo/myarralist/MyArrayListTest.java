@@ -2,7 +2,9 @@ package com.test.demo.myarralist;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -43,6 +45,10 @@ public class MyArrayListTest {
 
     /**
      * 集合的自动扩容
+     * 集合在进行add的时候会进行检测，如果添加元素后的数组长度（oldLength+1）大于原数组的长度（oldLength）
+     * 会进行自动扩容：新的数组长度为  oldLength + oldLength/2
+     *
+     * 在扩容的过程中使用了   Arrays.copyOf方法
      */
     @Test
     public void testAdd(){
@@ -58,6 +64,28 @@ public class MyArrayListTest {
         strings.add("i");
         strings.add("j");
         strings.add("k");//集合中数组扩容
+    }
+
+    /**
+     * Arrays.copyOf方法
+     * 第一个参数为   oldArray
+     * 第二个参数为   newArraySize
+     *
+     * 也就是说将原数组（oldArray）中的数据拷贝到一个新数组（newArray）中
+     * 这个新数组的长度就是 newArraySize
+     */
+    @Test
+    public void testArrayCopyOf(){
+        int[] array = new int[]{1,2,3,4};
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + ",");
+        }
+        System.out.println();
+        array = Arrays.copyOf(array, 5);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + ",");
+        }
+        System.out.println();
     }
 
     @Test

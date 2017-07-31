@@ -174,11 +174,12 @@ public class MyArrayList<E> extends MyAbstractList<E>
         System.out.println("modCount:"+modCount);
         modCount++;
         // overflow-conscious code
-        //如果添加元素后的长度 - 集合中容器的长度 > 0
+        //如果添加元素后的长度 - 集合中容器的长度 > 0,需要扩容
         if (minCapacity - elementData.length > 0){
             System.out.println("扩容前");
             System.out.println("minCapacity:"+minCapacity);
             System.out.println("elementData.length:"+elementData.length);
+            //数组的扩容
             grow(minCapacity);
             System.out.println("扩容后");
             System.out.println("minCapacity:"+minCapacity);
@@ -191,6 +192,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * Some VMs reserve some header words in an array.
      * Attempts to allocate larger arrays may result in
      * OutOfMemoryError: Requested array size exceeds VM limit
+     * 数组的最大长度
      */
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
@@ -199,6 +201,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * number of elements specified by the minimum capacity argument.
      *
      * @param minCapacity the desired minimum capacity
+     *                    原数组添加元素后的长度
      */
     private void grow(int minCapacity) {
         // overflow-conscious code
@@ -206,13 +209,26 @@ public class MyArrayList<E> extends MyAbstractList<E>
         int oldCapacity = elementData.length;
         //新数组长度 = 原数组长度 + 原数组长度的1/2
         int newCapacity = oldCapacity + (oldCapacity >> 1);
-        //如果
+        //如果新扩容后的数组长度仍然  小于  minCapacity，那么重新定义数组长度为minCapacity
         if (newCapacity - minCapacity < 0)
             newCapacity = minCapacity;
+        //如果新的数组长度超过了MAX_ARRAY_SIZE异常处理（不做深研究）
         if (newCapacity - MAX_ARRAY_SIZE > 0)
             newCapacity = hugeCapacity(minCapacity);
         // minCapacity is usually close to size, so this is a win:
+        System.out.println("newCapacity（扩容后新的数组长度）:"+newCapacity);
+
+        for (int i = 0; i < elementData.length; i++) {
+            System.out.print(elementData[i]+",");
+        }
+        System.out.println();
+        //将原数组elementData中的元素，复制到新的数组中，新数组长度为newCapacity，得到新的elementData数组
         elementData = Arrays.copyOf(elementData, newCapacity);
+
+        for (int i = 0; i < elementData.length; i++) {
+            System.out.print(elementData[i]+",");
+        }
+        System.out.println();
     }
 
     private static int hugeCapacity(int minCapacity) {
