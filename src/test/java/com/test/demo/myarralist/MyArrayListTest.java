@@ -14,7 +14,9 @@ import java.util.List;
 public class MyArrayListTest {
 
     /**
-     * 第一种构造
+     * 第一种构造：无参构造
+     * 构造出一个集合
+     * 集合中维护一个可变数组，数组长度为10
      */
     @Test
     public void testConstructor01(){
@@ -23,7 +25,9 @@ public class MyArrayListTest {
     }
 
     /**
-     * 第二种构造
+     * 第二种构造：参数类型是int
+     * 构造出一个集合
+     * 集合中维护一个数组，数组长度是指定的
      */
     @Test
     public void testConstructor02(){
@@ -32,7 +36,12 @@ public class MyArrayListTest {
     }
 
     /**
-     * 第三种构造
+     * 第三种构造：参数是collection类型
+     * 构造一个集合
+     * 该集合中维护一个数组
+     * 构造器中会将参数（old集合）数组化，赋值给新集合中的新数组
+     * 新数组长度就是老数组的长度
+     * 新集合长度就是老数组的长度
      */
     @Test
     public void testConstructor03(){
