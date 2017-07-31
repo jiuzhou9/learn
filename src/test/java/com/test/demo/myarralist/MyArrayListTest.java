@@ -48,7 +48,8 @@ public class MyArrayListTest {
      * 集合在进行add的时候会进行检测，如果添加元素后的数组长度（oldLength+1）大于原数组的长度（oldLength）
      * 会进行自动扩容：新的数组长度为  oldLength + oldLength/2
      *
-     * 在扩容的过程中使用了   Arrays.copyOf方法
+     * 在扩容的过程中使用了Arrays.copyOf方法，将原数组中的数组复制到新的数组中
+     * 然后在新数组中进行添加新的元素
      */
     @Test
     public void testAdd(){
