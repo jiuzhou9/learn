@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Vue demo</h1>
+        <div id="app">
+            <div>{{message}}</div>
+            <input type="text" v-model="message">
+        </div>
+
+        <div id="login">
+            <form action="/learn/user/login.do" method="post">
+                <input type="text" name="userName" required="required" placeholder="用户名">
+                <input type="text" name="password" required="required" placeholder="密码">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            message:'hello vue.js.'
+        }
+    });
+
+    /*new Vue({
+        el:'#login',
+        data: {
+            userName:'hello vue.js.',
+            password:'password'
+        }
+    });*/
+</script>
+</body>
+</html>

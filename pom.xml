@@ -165,13 +165,6 @@
       <artifactId>commons-codec</artifactId>
       <version>1.9</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>1.2.31</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
   <build>
     <finalName>learn</finalName>

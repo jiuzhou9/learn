@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<!--扫描器-->
+	<context:component-scan base-package="com.demo.controller"></context:component-scan>
+
+	<!--解决ajax springmvc http status 406 问题 java类的序列化-->
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" />
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>apolication/json; charset=UTF-8</value>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置静态资源：有些静态资源请求的处理
+	 location：定位静态资源位置，项目根目录下
+	 mapping：所有"/static/a"或者"/static/a/b"的请求都将作为静态请求处理，交给servlet处理
+	 -->
+	<!--<mvc:resources location="/static/" mapping="/static/**"/>-->
+	<mvc:default-servlet-handler/>
+
+	<!--视图解析器-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!--jsp 视图解析器-->
+		<!--<property name="prefix" value="/WEB-INF/shop/"></property>
+		<property name="suffix" value=".jsp"></property>-->
+
+		<!--html5视图解析器-->
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".html"></property>
+	</bean>
 </beans>
