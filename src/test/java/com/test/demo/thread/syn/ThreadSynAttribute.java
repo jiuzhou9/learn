@@ -10,15 +10,13 @@ public class ThreadSynAttribute implements Runnable {
     public Integer count = 0;
     public Single single = new Single();
 
-    //同步锁目标：对象的方法上（类实例方法上）
-    //必须要保证进来的对象是同一个对象，这样锁在方法上才能生效
-    public synchronized void increase(){
-        count++;
-    }
 
     public void run() {
         for (int j = 0; j < 10000; j++){
-            increase();
+//            increase();
+            synchronized (count){
+                System.out.println("对象属性");
+            }
         }
     }
 
