@@ -71,7 +71,7 @@ public class MyArrayListTest {
         strings.add("f");
         strings.add("g");
         strings.add("h");
-        strings.add("i");
+        strings.add("count");
         strings.add("j");
         strings.add("k");//集合中数组扩容
     }

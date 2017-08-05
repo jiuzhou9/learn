@@ -3,3 +3,4 @@
 1.setNull
 2.Thread和Runnable
 3.Integer类型
+4.ArrayList

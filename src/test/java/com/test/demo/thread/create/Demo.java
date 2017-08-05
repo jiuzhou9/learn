@@ -1,4 +1,4 @@
-package com.test.demo.thread;
+package com.test.demo.thread.create;
 
 import org.junit.Test;
 
@@ -89,6 +89,24 @@ public class Demo {
         try {
             t1.join();
             t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testCreate(){
+        //第一种方式
+        //ThreadNO1 thread = new ThreadNO1();
+
+        //第二种方式
+//        RunnableNO1 runnableNO1 = new RunnableNO1();
+        Thread thread = new Thread(new RunnableNO1());
+        thread.start();
+        System.out.println(1);
+        thread.interrupt();
+        try {
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

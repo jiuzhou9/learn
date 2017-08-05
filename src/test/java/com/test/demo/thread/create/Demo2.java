@@ -1,7 +1,10 @@
-package com.test.demo.thread;
+package com.test.demo.thread.create;
 
 /**
  * Created by 01210368 on 2017/8/1.
+ * 多线程一定快吗
+ * 100万以上多线程效率更高，100万以下单线程处理效率高
+ * 这是因为线程有创建和上下文切换的开销
  */
 public class Demo2 {
     private static final long count = 10000000l;
