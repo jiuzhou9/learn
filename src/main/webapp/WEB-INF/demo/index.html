@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="/learn/static/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+hello
+<div id="app">
+    <span>{{message}}</span>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        },
+        methods: {
+            showData: function () {
+                var _self = this;
+                $.ajax({
+                    type: 'GET',
+                    url: '/learn/user/login.do',
+
+                    success:function(data) {
+                        _self.message = JSON.stringify(data);
+                    }
+                });
+            }
+        }
+    });
+</script>
+</html>

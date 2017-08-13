@@ -1,0 +1,25 @@
+synchronized:同步锁，统一时间只能有一个线程执行synchronized包裹的代码。
+注意：需要注意的是synchronized锁住的是对象级别还是类级别。
+
+先要明白锁的是什么级别？这个问题很重要。
+主要就是static，如果synchronized锁住的代码部分是static修饰的那么就是类级别；
+如果synchronized锁住的部分不是static修饰的，那么就是对象级别。
+
+当锁住的是对象级别，那么创建线程的时候必须保证以下：
+    传入是的Runnable对象，即目标线程类的实例对象。
+    这个对象是唯一的，创建的所有线程使用的是同一个对象。
+    如下：
+    ThreadSynMethod threadSynMethod = new ThreadSynMethod();
+    Thread thread1 = new Thread(ThreadSynMethod.threadSyn);
+    Thread thread2 = new Thread(ThreadSynMethod.threadSyn);
+
+
+当锁住的是类级别，那么创建线程的时候必须保证以下：
+    传入的Runnable对象，即目标线程类的实例对象。
+    如下：
+    Thread thread1 = new Thread(new ThreadSyn());
+    Thread thread2 = new Thread(new ThreadSyn());
+
+synchronized锁住的对象就像是食堂的包间里的资源，没有被锁住的就像是大厅的资源，
+当synchronized后就拿到了该对象的监视器，直到释放该对象的资源其他线程才能使用这部分资源，
+否则其他线程是不能使用这部分资源的。

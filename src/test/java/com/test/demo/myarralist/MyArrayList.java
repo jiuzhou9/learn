@@ -13,12 +13,12 @@ import java.util.*;
  *
  * <p>The <tt>size</tt>, <tt>isEmpty</tt>, <tt>get</tt>, <tt>set</tt>,
  * <tt>iterator</tt>, and <tt>listIterator</tt> operations run in constant
- * time.  The <tt>add</tt> operation runs in <i>amortized constant time</i>,
+ * time.  The <tt>add</tt> operation runs in <count>amortized constant time</count>,
  * that is, adding n elements requires O(n) time.  All of the other operations
  * run in linear time (roughly speaking).  The constant factor is low compared
  * to that for the <tt>LinkedList</tt> implementation.
  *
- * <p>Each <tt>ArrayList</tt> instance has a <i>capacity</i>.  The capacity is
+ * <p>Each <tt>ArrayList</tt> instance has a <count>capacity</count>.  The capacity is
  * the size of the array used to store the elements in the list.  It is always
  * at least as large as the list size.  As elements are added to an ArrayList,
  * its capacity grows automatically.  The details of the growth policy are not
@@ -32,7 +32,7 @@ import java.util.*;
  * <p><strong>Note that this implementation is not synchronized.</strong>
  * If multiple threads access an <tt>ArrayList</tt> instance concurrently,
  * and at least one of the threads modifies the list structurally, it
- * <i>must</i> be synchronized externally.  (A structural modification is
+ * <count>must</count> be synchronized externally.  (A structural modification is
  * any operation that adds or deletes one or more elements, or explicitly
  * resizes the backing array; merely setting the value of an element is not
  * a structural modification.)  This is typically accomplished by
@@ -61,8 +61,8 @@ import java.util.*;
  * presence of unsynchronized concurrent modification.  Fail-fast iterators
  * throw {@code ConcurrentModificationException} on a best-effort basis.
  * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness:  <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
+ * exception for its correctness:  <count>the fail-fast behavior of iterators
+ * should be used only to detect bugs.</count>
  *
  * <p>This class is a member of the
  * <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -171,10 +171,20 @@ public class MyArrayList<E> extends MyAbstractList<E>
     }
 
     private void ensureCapacityInternal(int minCapacity) {
+        System.out.println("modCount:"+modCount);
         modCount++;
         // overflow-conscious code
-        if (minCapacity - elementData.length > 0)
+        //如果添加元素后的长度 - 集合中容器的长度 > 0,需要扩容
+        if (minCapacity - elementData.length > 0){
+            System.out.println("扩容前");
+            System.out.println("minCapacity:"+minCapacity);
+            System.out.println("elementData.length:"+elementData.length);
+            //数组的扩容
             grow(minCapacity);
+            System.out.println("扩容后");
+            System.out.println("minCapacity:"+minCapacity);
+            System.out.println("elementData.length:"+elementData.length);
+        }
     }
 
     /**
@@ -182,6 +192,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * Some VMs reserve some header words in an array.
      * Attempts to allocate larger arrays may result in
      * OutOfMemoryError: Requested array size exceeds VM limit
+     * 数组的最大长度
      */
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
@@ -190,17 +201,34 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * number of elements specified by the minimum capacity argument.
      *
      * @param minCapacity the desired minimum capacity
+     *                    原数组添加元素后的长度
      */
     private void grow(int minCapacity) {
         // overflow-conscious code
+        //原数组长度
         int oldCapacity = elementData.length;
+        //新数组长度 = 原数组长度 + 原数组长度的1/2
         int newCapacity = oldCapacity + (oldCapacity >> 1);
+        //如果新扩容后的数组长度仍然  小于  minCapacity，那么重新定义数组长度为minCapacity
         if (newCapacity - minCapacity < 0)
             newCapacity = minCapacity;
+        //如果新的数组长度超过了MAX_ARRAY_SIZE异常处理（不做深研究）
         if (newCapacity - MAX_ARRAY_SIZE > 0)
             newCapacity = hugeCapacity(minCapacity);
         // minCapacity is usually close to size, so this is a win:
+        System.out.println("newCapacity（扩容后新的数组长度）:"+newCapacity);
+
+        for (int i = 0; i < elementData.length; i++) {
+            System.out.print(elementData[i]+",");
+        }
+        System.out.println();
+        //将原数组elementData中的元素，复制到新的数组中，新数组长度为newCapacity，得到新的elementData数组
         elementData = Arrays.copyOf(elementData, newCapacity);
+
+        for (int i = 0; i < elementData.length; i++) {
+            System.out.print(elementData[i]+",");
+        }
+        System.out.println();
     }
 
     private static int hugeCapacity(int minCapacity) {
@@ -245,8 +273,8 @@ public class MyArrayList<E> extends MyAbstractList<E>
     /**
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
+     * More formally, returns the lowest index <tt>count</tt> such that
+     * <tt>(o==null&nbsp;?&nbsp;get(count)==null&nbsp;:&nbsp;o.equals(get(count)))</tt>,
      * or -1 if there is no such index.
      */
     public int indexOf(Object o) {
@@ -265,8 +293,8 @@ public class MyArrayList<E> extends MyAbstractList<E>
     /**
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
+     * More formally, returns the highest index <tt>count</tt> such that
+     * <tt>(o==null&nbsp;?&nbsp;get(count)==null&nbsp;:&nbsp;o.equals(get(count)))</tt>,
      * or -1 if there is no such index.
      */
     public int lastIndexOf(Object o) {
@@ -328,10 +356,10 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * this list.
      *
      * <p>If the list fits in the specified array with room to spare
-     * (i.e., the array has more elements than the list), the element in
+     * (count.e., the array has more elements than the list), the element in
      * the array immediately following the end of the collection is set to
      * <tt>null</tt>.  (This is useful in determining the length of the
-     * list <i>only</i> if the caller knows that the list does not contain
+     * list <count>only</count> if the caller knows that the list does not contain
      * any null elements.)
      *
      * @param a the array into which the elements of the list are to
@@ -398,7 +426,9 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * @return <tt>true</tt> (as specified by {@link Collection#add})
      */
     public boolean add(E e) {
+        //确保添加新的元素后不会越界，这个方法里有可能会改变集合中数组的长度
         ensureCapacityInternal(size + 1);  // Increments modCount!!
+        //数组中添加新的元素
         elementData[size++] = e;
         return true;
     }
@@ -450,8 +480,8 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * Removes the first occurrence of the specified element from this list,
      * if it is present.  If the list does not contain the element, it is
      * unchanged.  More formally, removes the element with the lowest index
-     * <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>
+     * <tt>count</tt> such that
+     * <tt>(o==null&nbsp;?&nbsp;get(count)==null&nbsp;:&nbsp;o.equals(get(count)))</tt>
      * (if such an element exists).  Returns <tt>true</tt> if this list
      * contained the specified element (or equivalently, if this list
      * changed as a result of the call).
@@ -731,7 +761,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * An initial call to {@link ListIterator#previous previous} would
      * return the element with the specified index minus one.
      *
-     * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned list iterator is <a href="#fail-fast"><count>fail-fast</count></a>.
      *
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
@@ -745,7 +775,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
      *
-     * <p>The returned list iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned list iterator is <a href="#fail-fast"><count>fail-fast</count></a>.
      *
      * @see #listIterator(int)
      */
@@ -756,7 +786,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      *
-     * <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
+     * <p>The returned iterator is <a href="#fail-fast"><count>fail-fast</count></a>.
      *
      * @return an iterator over the elements in this list in proper sequence
      */
@@ -892,7 +922,7 @@ public class MyArrayList<E> extends MyAbstractList<E>
      * {@link Collections} class can be applied to a subList.
      *
      * <p>The semantics of the list returned by this method become undefined if
-     * the backing list (i.e., this list) is <i>structurally modified</i> in
+     * the backing list (count.e., this list) is <count>structurally modified</count> in
      * any way other than via the returned list.  (Structural modifications are
      * those that change the size of this list, or otherwise perturb it in such
      * a fashion that iterations in progress may yield incorrect results.)

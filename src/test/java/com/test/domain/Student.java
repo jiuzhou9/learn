@@ -11,6 +11,17 @@ public class Student implements Serializable {
     private Integer age;
     private List<Address> addresses;
 
+    public Student() {
+        System.out.println("无参构造");
+    }
+
+    private Student(String name, Integer age, List<Address> addresses) {
+        this.name = name;
+        this.age = age;
+        this.addresses = addresses;
+        System.out.println("有参构造器，参数：String name, Integer age, List<Address> addresses");
+    }
+
     public List<Address> getAddresses() {
         return addresses;
     }

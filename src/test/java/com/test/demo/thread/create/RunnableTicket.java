@@ -1,4 +1,4 @@
-package com.test.demo.thread;
+package com.test.demo.thread.create;
 
 /**
  * Created by jiuzhou on 2017/5/28.

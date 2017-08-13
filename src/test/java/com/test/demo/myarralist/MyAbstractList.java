@@ -24,7 +24,7 @@ import java.util.*;
  * specification.
  *
  * <p>Unlike the other abstract collection implementations, the programmer does
- * <i>not</i> have to provide an iterator implementation; the iterator and
+ * <count>not</count> have to provide an iterator implementation; the iterator and
  * list iterator are implemented by this class, on top of the "random access"
  * methods:
  * {@link #get(int)},
@@ -470,8 +470,8 @@ public abstract class MyAbstractList<E> extends AbstractCollection<E> implements
      * Compares the specified object with this list for equality.  Returns
      * {@code true} if and only if the specified object is also a list, both
      * lists have the same size, and all corresponding pairs of elements in
-     * the two lists are <i>equal</i>.  (Two elements {@code e1} and
-     * {@code e2} are <i>equal</i> if {@code (e1==null ? e2==null :
+     * the two lists are <count>equal</count>.  (Two elements {@code e1} and
+     * {@code e2} are <count>equal</count> if {@code (e1==null ? e2==null :
      * e1.equals(e2))}.)  In other words, two lists are defined to be
      * equal if they contain the same elements in the same order.<p>
      *
@@ -529,7 +529,7 @@ public abstract class MyAbstractList<E> extends AbstractCollection<E> implements
      *
      * <p>This method is called by the {@code clear} operation on this list
      * and its subLists.  Overriding this method to take advantage of
-     * the internals of the list implementation can <i>substantially</i>
+     * the internals of the list implementation can <count>substantially</count>
      * improve the performance of the {@code clear} operation on this list
      * and its subLists.
      *
@@ -551,7 +551,7 @@ public abstract class MyAbstractList<E> extends AbstractCollection<E> implements
     }
 
     /**
-     * The number of times this list has been <i>structurally modified</i>.
+     * The number of times this list has been <count>structurally modified</count>.
      * Structural modifications are those that change the size of the
      * list, or otherwise perturb it in such a fashion that iterations in
      * progress may yield incorrect results.
@@ -562,7 +562,7 @@ public abstract class MyAbstractList<E> extends AbstractCollection<E> implements
      * iterator) will throw a {@code ConcurrentModificationException} in
      * response to the {@code next}, {@code remove}, {@code previous},
      * {@code set} or {@code add} operations.  This provides
-     * <i>fail-fast</i> behavior, rather than non-deterministic behavior in
+     * <count>fail-fast</count> behavior, rather than non-deterministic behavior in
      * the face of concurrent modification during iteration.
      *
      * <p><b>Use of this field by subclasses is optional.</b> If a subclass
@@ -575,6 +575,8 @@ public abstract class MyAbstractList<E> extends AbstractCollection<E> implements
      * bogus {@code ConcurrentModificationExceptions}.  If an implementation
      * does not wish to provide fail-fast iterators, this field may be
      * ignored.
+     *
+     * 记录集合的结构性变化的次数
      */
     protected transient int modCount = 0;
 
